@@ -29,9 +29,18 @@ class App extends Component {
   };
 
   handleScoreChange = (index, delta) => {
-    this.setState( prevState => ({
-      score: prevState.players[index].score += delta
-    }));
+    this.setState( prevState => {
+      const updatedPlayers = [...prevState.players];
+      const updatedPlayer = {...updatedPlayers[index]};
+
+      updatedPlayer.score += delta;
+      updatedPlayers[index] = updatedPlayer;
+
+      return {
+        players: updatedPlayers
+      };
+
+    });
   }
 
   handleRemovePlayer = (id) => {
@@ -47,7 +56,7 @@ class App extends Component {
       <div className="scoreboard">
         <Header 
           title="Scoreboard" 
-          totalPlayers={this.state.players.length} 
+          players={this.state.players}
         />
   
         {/* Players list */}
@@ -59,7 +68,7 @@ class App extends Component {
             key={player.id.toString()}
             index={index}
             changeScore={this.handleScoreChange}
-            removePlayer={this.handleRemovePlayer}           
+            removePlayer={this.handleRemovePlayer}         
           />
         )}
       </div>
