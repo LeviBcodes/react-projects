@@ -6,7 +6,7 @@ import Values from 'values.js'
 function App() {
   const [color,setColor] = useState('');
   const [error,setError] = useState(false);
-  const [list,setList] = useState([]);
+  const [list,setList] = useState(new Values('#420696').all(10));
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,7 +24,7 @@ function App() {
       <h3>color generator</h3>
       <form onSubmit={handleSubmit}>
         <input type="text" value={color} onChange={(e)=>setColor(e.target.value)}
-        placeholder="#ebc034" className={`${error?'error':null}`}/>
+        placeholder="#420696" className={`${error?'error':null}`}/>
         <button className="btn" type="submit">submit</button>
       </form>
     </section>
