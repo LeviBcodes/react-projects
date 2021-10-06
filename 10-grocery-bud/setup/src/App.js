@@ -8,16 +8,28 @@ function App() {
   const [isEditing,setIsEditing] = useState(false);
   const [editID,setEditId] = useState(null);
   const [alert,setAlert] = useState({show:false,msg:'',type:''});
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  }
 
   return <section className="section-center">
-    <form action="">
-      <div className="grocery-container">
-        <List />
-        <button className="clear-btn">
-          
+    <form action="" onSubmit={(handleSubmit)}>
+      {alert.show && <Alert />}
+      <h3>grocery bud</h3>
+      <div className="form-control">
+        <input type="text" className="grocery" placeholder="eg. eggs" value={name}
+        onChange={(e)=> setName(e.target.value)} />
+        <button type="submit" className="submit-btn">
+          {isEditing ? 'edit' : 'submit'}
         </button>
       </div>
     </form>
+    <div className="grocery-container">
+      <List />
+      <button className="clear-btn">
+
+      </button>
+    </div>
   </section>
 }
 
