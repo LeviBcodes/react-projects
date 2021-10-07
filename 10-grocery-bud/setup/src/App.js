@@ -10,7 +10,7 @@ function App() {
   const [alert,setAlert] = useState({show:false,msg:'',type:''});
   const handleSubmit = (e) => {
     if(!name){
-
+      showAlert(true,'danger','please enter value')
     }
     else if(name && isEditing) {
 
@@ -22,9 +22,13 @@ function App() {
     }
   }
 
+  const showAlert = (show=false,type='',msg='') => {
+    setAlert({show:show,type,msg})
+  };
+
   return <section className="section-center">
     <form action="" onSubmit={(handleSubmit)}>
-      {alert.show && <Alert {...alert} />}
+      {alert.show && <Alert {...alert} removeAlert={showAlert()} />}
       <h3>grocery bud</h3>
       <div className="form-control">
         <input type="text" className="grocery" placeholder="eg. eggs" value={name}
