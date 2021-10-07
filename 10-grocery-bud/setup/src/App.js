@@ -37,27 +37,30 @@ function App() {
     setList(list.filter((item)=> item.id !== id))
   }
 
-  return <section className="section-center">
-    <form action="" onSubmit={(handleSubmit)}>
-      {alert.show && <Alert {...alert} removeAlert={showAlert()} />}
-      <h3>grocery bud</h3>
-      <div className="form-control">
-        <input type="text" className="grocery" placeholder="eg. eggs" value={name}
-        onChange={(e)=> setName(e.target.value)} />
-        <button type="submit" className="submit-btn">
-          {isEditing ? 'edit' : 'submit'}
+  return (
+    <section className="section-center">
+      <form action="" onSubmit={(handleSubmit)}>
+        {alert.show && <Alert {...alert} removeAlert={showAlert()} 
+        list={list}/>}
+        <h3>grocery bud</h3>
+        <div className="form-control">
+          <input type="text" className="grocery" placeholder="eg. eggs" value={name}
+          onChange={(e)=> setName(e.target.value)} />
+          <button type="submit" className="submit-btn">
+            {isEditing ? 'edit' : 'submit'}
+          </button>
+        </div>
+      </form>
+      {list.length>0 &&(
+      <div className="grocery-container">
+        <List items={list} removeItem={removeItem} />
+        <button className="clear-btn" onClick={clearList}>
+
         </button>
       </div>
-    </form>
-    {list.length>0 &&(
-    <div className="grocery-container">
-      <List items={list} removeItem={removeItem} />
-      <button className="clear-btn" onClick={clearList}>
-
-      </button>
-    </div>
-    )}
-  </section>
+      )}
+    </section>
+  )
 }
 
 export default App
