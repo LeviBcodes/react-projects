@@ -13,7 +13,17 @@ function App() {
       showAlert(true,'danger','please enter value')
     }
     else if(name && isEditing) {
-
+      setList(list.map((item)=>{
+        if(item.id === editID){
+          return{...item,title:name}
+        }
+        return item
+      })
+    )
+    setName('');
+    setEditId(null);
+    setIsEditing(false);
+    showAlert(true,'success','value changed')
     }
     else {
       showAlert(true,'success','item added to the list')
