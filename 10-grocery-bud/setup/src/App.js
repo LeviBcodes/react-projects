@@ -24,7 +24,7 @@ function App() {
 
   return <section className="section-center">
     <form action="" onSubmit={(handleSubmit)}>
-      {alert.show && <Alert />}
+      {alert.show && <Alert {...alert} />}
       <h3>grocery bud</h3>
       <div className="form-control">
         <input type="text" className="grocery" placeholder="eg. eggs" value={name}
