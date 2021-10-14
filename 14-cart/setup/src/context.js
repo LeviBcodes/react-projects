@@ -39,6 +39,9 @@ const AppProvider = ({ children }) => {
   useEffect(()=> {
     dispatch({type: "GET_TOTALS"})
   }, [state.cart])
+  const toggleAmount = (id,type) => {
+    dispatch({type: 'TOGGLE_Amount',payload:{id,type}})
+  }
   return (
     <AppContext.Provider
       value={{
@@ -47,6 +50,7 @@ const AppProvider = ({ children }) => {
         remove,
         increase,
         decrease,
+        toggleAmount
       }}
     >
       {children}
