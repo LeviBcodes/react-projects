@@ -53,10 +53,10 @@ const reducer = (state, action) => {
                 }
             }
             return cartItem
-        });
+        }).filter((cartItem) => cartItem.amount !== 0);
         return {...state,cart:tempCart}
     }
-    return state
+    throw new Error('no matching action type')
 }
 
 export default reducer
