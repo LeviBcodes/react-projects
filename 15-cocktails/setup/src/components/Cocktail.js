@@ -15,6 +15,7 @@ const Cocktail = ({image,name,id,info,glass}) => {
           details
         </Link>
       </div>
+      
     </article>
   )
 }
